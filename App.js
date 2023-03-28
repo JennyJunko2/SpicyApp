@@ -1,14 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext, AuthContextProvider } from './authentication/auth-context';
 import SignupScreen from './screens/SignupScreen';
 import { NavigationContainer } from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import LoginScreen from './screens/LoginScreen';
-import PostScreen from './screens/AllSpicyItemsScreen';
 import IconButton from './components/UI/IconButton';
 import { logout } from './authentication/firebase';
 import AllSpicyItemsScreen from './screens/AllSpicyItemsScreen';
+import AddSpicyItemScreen from './screens/AddSpicyItemScreen';
+import { initializeTables } from './utils/database';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,19 +47,23 @@ const PostAuthenticatedStack = () => {
                 color={tintColor}
                 size={24}
                 icon='add'
-                onPress={() => {}}
-                key='1'
+                onPress={() => navigation.navigate('AddSpicyItem')}
+                id='1'
               />,
               <IconButton
                 color={tintColor}
                 size={24}
                 icon='log-out-outline'
                 onPress={logout}
-                key='2'
+                id='2'
               />
             ]
           )
         })}
+      />
+      <Stack.Screen
+        name='AddSpicyItem'
+        component={AddSpicyItemScreen}
       />
     </Stack.Navigator>
   )
@@ -79,6 +84,11 @@ const Root = () => {
 }
 
 export default function App() {
+
+  useEffect(() => {
+    initializeTables()
+  }, [])
+
   return (
     <>
       <StatusBar style="auto" />
