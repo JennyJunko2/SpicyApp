@@ -9,7 +9,7 @@ import IconButton from './components/UI/IconButton';
 import { logout } from './authentication/firebase';
 import AllSpicyItemsScreen from './screens/AllSpicyItemsScreen';
 import AddSpicyItemScreen from './screens/AddSpicyItemScreen';
-import { initializeTables } from './utils/database';
+import { dropTables, initializeTables } from './utils/database';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,14 +48,14 @@ const PostAuthenticatedStack = () => {
                 size={24}
                 icon='add'
                 onPress={() => navigation.navigate('AddSpicyItem')}
-                id='1'
+                key='1'
               />,
               <IconButton
                 color={tintColor}
                 size={24}
                 icon='log-out-outline'
                 onPress={logout}
-                id='2'
+                key='2'
               />
             ]
           )
@@ -86,7 +86,10 @@ const Root = () => {
 export default function App() {
 
   useEffect(() => {
-    initializeTables()
+    const dbInit = async() => {
+      await initializeTables()
+    }
+    dbInit()
   }, [])
 
   return (

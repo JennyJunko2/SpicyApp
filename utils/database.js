@@ -2,13 +2,38 @@ import * as SQLite from 'expo-sqlite'
 
 const database = SQLite.openDatabase('spicy.db')
 
+export const dropTables = () => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((transaction) => {
+      transaction.executeSql(
+        `DROP TABLE IF EXISTS categories;
+          DROP TABLE IF EXISTS tags;
+          DROP TABLE IF EXISTS spicy_items;
+        `,
+        [],
+        (_, result) => {
+          console.log('success in dropping:', result)
+          resolve(result)
+        },
+        (_, error) => {
+          console.log('error when dropping:', error)
+          reject(error)
+        }
+      )
+    })
+  })
+
+  return promise
+}
+
 export const initializeTables = () => {
   const promise = new Promise((resolve, reject) => {
     database.transaction((transaction) => {
       transaction.executeSql(
         `CREATE TABLE IF NOT EXISTS categories (
           category_id INTEGER PRIMARY KEY NOT NULL,
-          name TEXT NOT NULL
+          name TEXT NOT NULL,
+          UNIQUE(name)
         )`,
         [],
         (_, result) => {
@@ -50,7 +75,7 @@ export const initializeTables = () => {
         (_, error) => {reject(error)}
       ),
       transaction.executeSql(
-        `INSERT INTO categories (name) VALUES ('Shop'), ('Product'), ('Recipe')`,
+        `INSERT OR IGNORE INTO categories (name) VALUES ('Shop'), ('Product'), ('Recipe')`,
         [],
         (_, result) => {
           console.log('categories table inserted:', result)
@@ -73,4 +98,31 @@ export const addSpicyItem = (spicyItem) => {
       )
     })
   })
+}
+
+export const getAllCategories = () => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((transaction) => {
+      transaction.executeSql(
+        `SELECT * FROM categories`,
+        [],
+        (_, result) => {
+
+          const res = result.rows._array.map((item) => {
+            return {
+              value: item.category_id,
+              label: item.name
+            }
+          })
+          resolve(res)
+        },
+        (_, error) => {
+          console.log(error)
+          reject(error)
+        },
+      )
+    })
+  })
+
+  return promise
 } 
