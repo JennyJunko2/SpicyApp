@@ -1,11 +1,12 @@
 import { Text } from 'react-native'
 import AddSpicyItemForm from '../components/SpicyItems/AddSpicyItemForm'
+import { addSpicyItem } from '../utils/database'
 
-const AddSpicyItemScreen = () => {
+const AddSpicyItemScreen = ({navigation}) => {
 
-  const createHandler = () => {
-    // 1. send insert query to sqlite
-    // 2. navigate back to the listing page
+  const createHandler = async(data) => {
+    await addSpicyItem(data)
+    navigation.navigate('AllSpicyItems')
   }
 
   return (

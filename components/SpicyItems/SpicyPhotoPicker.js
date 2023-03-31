@@ -4,7 +4,6 @@ import { Image, Text, Alert, View, StyleSheet } from "react-native"
 import OutlinedButton from '../UI/OutlinedButton'
 import { useField, useFormikContext } from 'formik'
 
-
 const SpicyPhotoPicker = () => {
   const [cameraPermissionInformation, requestPermission] = useCameraPermissions()
   const [field] = useField('imageUri')
@@ -42,7 +41,7 @@ const SpicyPhotoPicker = () => {
     setFieldValue(field.name, image.assets[0].uri)
   }
 
-  let imagePreview = <Text>No image taken yet.</Text>
+  let imagePreview = <Text>Add an image of this spicy food!</Text>
   if (field.value) {
     imagePreview = <Image style={styles.image} source={{uri: field.value}}/>
   }
@@ -57,7 +56,7 @@ const SpicyPhotoPicker = () => {
         onPress={takeImageHandler}
         icon='camera'
       >
-        Take Spicy Photo
+        Take Photo
       </OutlinedButton>
     </View>
   )
@@ -71,12 +70,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    borderRadius: 4
+    borderRadius: 8
   },
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 4
+    borderRadius: 8
   }
 })
 

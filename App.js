@@ -10,6 +10,8 @@ import { logout } from './authentication/firebase';
 import AllSpicyItemsScreen from './screens/AllSpicyItemsScreen';
 import AddSpicyItemScreen from './screens/AddSpicyItemScreen';
 import { dropTables, initializeTables } from './utils/database';
+import MapScreen from './screens/MapScreen';
+import SpicyItemDetailsScreen from './screens/SpicyItemDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -65,6 +67,13 @@ const PostAuthenticatedStack = () => {
         name='AddSpicyItem'
         component={AddSpicyItemScreen}
       />
+      <Stack.Screen
+        name='Map'
+        component={MapScreen}
+      />
+      <Stack.Screen name='SpicyItemDetails' component={SpicyItemDetailsScreen} options={{
+        title: 'Loading Spicy Item...'
+      }}/>
     </Stack.Navigator>
   )
 }
@@ -87,6 +96,7 @@ export default function App() {
 
   useEffect(() => {
     const dbInit = async() => {
+      // await dropTables()
       await initializeTables()
     }
     dbInit()

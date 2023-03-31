@@ -21,6 +21,7 @@ const OutlinedButton = ({children, onPress, icon}) => {
 
 const styles = StyleSheet.create({
   button: {
+    flex: 1,
     paddingHorizontal: 12,
     paddingVertical: 6,
     margin: 4,
@@ -28,7 +29,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'blue'
+    borderColor: 'blue',
+    borderRadius: 6
   },
   pressed: {
     opacity: 0.7
