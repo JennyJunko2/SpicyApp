@@ -1,33 +1,27 @@
 import { Text, View, StyleSheet, Alert, Image } from "react-native"
 import OutlinedButton from "../UI/OutlinedButton"
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from 'expo-location'
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { getMapPreview } from "../../utils/location"
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native"
 import { useField, useFormikContext } from 'formik'
 
 
 const SpicyLocationPicker = () => {
-  const [pickedLocation, setPickedLocation] = useState()
   const [permissionInfo, requestPermission] = useForegroundPermissions()
   const [field] = useField('location')
-  const { setFieldValue } = useFormikContext()
+  const { setFieldValue, initialValues } = useFormikContext()
   const navigation = useNavigation()
   const isFocused = useIsFocused()
   const route = useRoute()
   
   useEffect(() => {
-    if (isFocused && route.params) {
-      // setPickedLocation({
-      //   lat: route.params.pickedLocationLat,
-      //   lng: route.params.pickedLocationLng
-      // })
-      setFieldValue(field.name, {
-        lat: route.params.pickedLocationLat,
-        lng: route.params.pickedLocationLng
-      })
+    if (isFocused && route.params?.pickedLocationLat) {
+      setFieldValue(field.name, { lat: route.params.pickedLocationLat, lng: route.params.pickedLocationLng })
+    } else if (isFocused && initialValues?.location_lat) {
+      setFieldValue(field.name, { lat: initialValues?.location_lat, lng: initialValues?.location_lng})
     }
-  }, [isFocused, route])
+  }, [isFocused, route, initialValues])
 
   const verifyPermissions = async() => {
     if (permissionInfo.status === PermissionStatus.UNDETERMINED) {
@@ -55,10 +49,6 @@ const SpicyLocationPicker = () => {
 
     const location = await getCurrentPositionAsync()
 
-    // setPickedLocation({
-    //   lat: location.coords.latitude,
-    //   lng: location.coords.longitude
-    // })
     setFieldValue(field.name,
       {
         lat: location.coords.latitude,

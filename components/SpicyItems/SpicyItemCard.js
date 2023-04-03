@@ -2,8 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import { View, Text, Pressable, StyleSheet, Image } from 'react-native'
 
 const SpicyItemCard = ({item}) => {
-  console.log('item:', item)
-
   const navigation = useNavigation()
 
   const clickCardHandler = () => {
@@ -17,8 +15,8 @@ const SpicyItemCard = ({item}) => {
         <Text style={styles.title}>{item.spicy_item_name}</Text>
         <Text>{item.category_name}</Text>
         <View style={styles.ratingBox}>
-          <Text style={styles.rate}>Spicy: {item.spicy_rate}</Text>
-          <Text style={styles.rate}>Taste: {item.delicious_rate}</Text>
+          <Text style={styles.rate}>Spicy: {item.spicy_rate.toFixed(1)}</Text>
+          <Text style={styles.rate}>Tasty: {item.delicious_rate.toFixed(1)}</Text>
         </View>
       </View>
     </Pressable>
@@ -30,7 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     borderRadius: 6,
-    marginVertical: 12,
+    marginVertical: 8,
     backgroundColor: '#ffffff',
     elevation: 2,
     shadowColor: 'black',

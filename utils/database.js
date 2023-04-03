@@ -132,6 +132,27 @@ export const addSpicyItem = (spicyItem) => {
   return promise
 }
 
+export const updateSpicyItem = (spicyItem) => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((transaction) => {
+      transaction.executeSql(
+        `UPDATE spicy_items 
+        SET name = ?, category_id = ?, description = ?, spicy_rate = ?, delicious_rate = ?, image_uri = ?, location_lat = ?, location_lng = ?
+        WHERE item_id = ?`,
+        [spicyItem.title, spicyItem.category, spicyItem.description, spicyItem.spicyRate, spicyItem.deliciousRate, spicyItem.imageUri, spicyItem.location?.lat, spicyItem.location?.lng, spicyItem.item_id],
+        (_, result) => {
+          console.log('successfully updated')
+        },
+        (_,error) => {
+          console.log('error in update')
+        }
+      )
+    })
+  })
+
+  return promise
+}
+
 export const getAllCategories = () => {
   const promise = new Promise((resolve, reject) => {
     database.transaction((transaction) => {

@@ -1,16 +1,24 @@
 import { Text } from 'react-native'
 import AddSpicyItemForm from '../components/SpicyItems/AddSpicyItemForm'
-import { addSpicyItem } from '../utils/database'
+import { addSpicyItem, updateSpicyItem } from '../utils/database'
 
-const AddSpicyItemScreen = ({navigation}) => {
+const AddSpicyItemScreen = ({navigation, route}) => {
 
-  const createHandler = async(data) => {
-    await addSpicyItem(data)
-    navigation.navigate('AllSpicyItems')
+  const submitHandler = async(data) => {
+    if (data?.item_id) {
+      await updateSpicyItem(data)
+      navigation.navigate('AllSpicyItems')
+    } else {
+      await addSpicyItem({ ...data, createdAt: Date.now() })
+      navigation.navigate('AllSpicyItems')
+    }
   }
 
   return (
-    <AddSpicyItemForm onCreateHandler={createHandler}/>
+    <AddSpicyItemForm
+      onSubmitHandler={submitHandler}
+      initialValues={route.params?.item}
+    />
   )
 }
 

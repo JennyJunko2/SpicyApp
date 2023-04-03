@@ -42,7 +42,7 @@ const AllSpicyItemsScreen = () => {
   return (
     <FlatList
       data={filteredList}
-      renderItem={({item}) => <SpicyItemCard item={item} onSelect={() => {}}/>}
+      renderItem={({item}) => <SpicyItemCard item={item} />}
       keyExtractor={(item) => item.item_id}
       ListHeaderComponent={renderSearchBar()}
       style={styles.flatList}
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#ffffff',
     borderRadius: 8,
-    padding: 12
+    padding: 12,
+    marginBottom: 12
   }
 })
 

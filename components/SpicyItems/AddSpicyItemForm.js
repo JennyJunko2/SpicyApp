@@ -7,11 +7,9 @@ import BasicButton from '../UI/BasicButton'
 import AddSpicyItemValidationSchema from '../../utils/validation'
 import FormattedTextInput from '../UI/FormattedTextInput'
 
-const AddSpicyItemForm = ({onCreateHandler}) => {
-
+const AddSpicyItemForm = ({onSubmitHandler, initialValues}) => {
   const submitFormHandler = (data) => {
-    console.log('data:',data)
-    onCreateHandler({ ...data, createdAt: Date.now() })
+    onSubmitHandler({ ...data, item_id: initialValues?.item_id })
   }
 
   return (
@@ -22,13 +20,16 @@ const AddSpicyItemForm = ({onCreateHandler}) => {
     >
       <Formik
         initialValues={{
-          title: '',
-          description: '',
-          deliciousRate: undefined,
-          spicyRate: undefined,
-          category: undefined,
-          imageUri: null,
-          location: null
+          title: initialValues?.spicy_item_name,
+          description: initialValues?.description,
+          deliciousRate: initialValues?.delicious_rate.toString(),
+          spicyRate: initialValues?.spicy_rate.toString(),
+          category: initialValues?.category_id,
+          imageUri: initialValues?.image_uri,
+          location: initialValues ? {
+            lat: initialValues.location_lat,
+            lng: initialValues.location_lng
+          } : null
         }}
         onSubmit={submitFormHandler}
         validationSchema={AddSpicyItemValidationSchema}
@@ -56,7 +57,7 @@ const AddSpicyItemForm = ({onCreateHandler}) => {
               />
               <View style={styles.ratesContainer}>
                 <FormattedTextInput
-                  label='Delicious Rate'
+                  label='Tasty Rate'
                   placeholder='0.0 - 5.0'
                   value={values.deliciousRate}
                   onChangeText={handleChange('deliciousRate')}
