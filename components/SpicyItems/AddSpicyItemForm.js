@@ -64,6 +64,7 @@ const AddSpicyItemForm = ({onSubmitHandler, initialValues}) => {
                   onChangeText={handleChange('deliciousRate')}
                   error={errors.deliciousRate}
                   touched={touched.deliciousRate}
+                  keyboardType='decimal-pad'
                   customStyle={[styles.rate, {marginRight: 10}]}
                 />
                 <FormattedTextInput
@@ -73,6 +74,7 @@ const AddSpicyItemForm = ({onSubmitHandler, initialValues}) => {
                   onChangeText={handleChange('spicyRate')}
                   error={errors.spicyRate}
                   touched={touched.spicyRate}
+                  keyboardType='decimal-pad'
                   customStyle={styles.rate}
                 />
               </View>

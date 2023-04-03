@@ -126,7 +126,7 @@ export default function App() {
 
   useEffect(() => {
     const dbInit = async() => {
-      // await dropTables()
+      await dropTables()
       await initializeTables()
     }
     dbInit()

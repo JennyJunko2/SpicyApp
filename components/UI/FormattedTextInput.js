@@ -9,6 +9,7 @@ const FormattedTextInput = ({
   error,
   touched,
   multiline = false,
+  keyboardType = 'default',
   customStyle
 }) => {
 
@@ -21,6 +22,7 @@ const FormattedTextInput = ({
         onChangeText={onChangeText}
         multiline={multiline}
         style={[styles.textInput, multiline && styles.multiline]}
+        keyboardType={keyboardType}
       />
       {error && touched ? (
         <Text style={styles.errorText}>{error}</Text>

@@ -36,7 +36,6 @@ const AllSpicyItemsScreen = () => {
   })
 
   const sortOrderHandler = (sort) => {
-    console.log('hello??',sort)
     setSortOrder(sort)
   }
 
@@ -88,6 +87,7 @@ const AllSpicyItemsScreen = () => {
       keyExtractor={(item) => item.item_id}
       ListHeaderComponent={renderSearchBar()}
       style={styles.flatList}
+      ListEmptyComponent={<Text>No item registered yet</Text>}
     />
   )
 }
