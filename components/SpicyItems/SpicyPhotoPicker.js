@@ -3,6 +3,7 @@ import { launchCameraAsync, useCameraPermissions, PermissionStatus } from 'expo-
 import { Image, Text, Alert, View, StyleSheet } from "react-native"
 import OutlinedButton from '../UI/OutlinedButton'
 import { useField, useFormikContext } from 'formik'
+import { Colors } from '../../constants/colors'
 
 const SpicyPhotoPicker = () => {
   const [cameraPermissionInformation, requestPermission] = useCameraPermissions()
@@ -41,7 +42,7 @@ const SpicyPhotoPicker = () => {
     setFieldValue(field.name, image.assets[0].uri)
   }
 
-  let imagePreview = <Text>Add an image of this spicy food!</Text>
+  let imagePreview = <Text style={styles.text}>Add an image of this spicy food!</Text>
   if (field.value) {
     imagePreview = <Image style={styles.image} source={{uri: field.value}}/>
   }
@@ -69,13 +70,21 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderRadius: 8
+    backgroundColor: Colors.backgroundColor,
+    borderRadius: 8,
+    elevation: 2,
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowOffset: {width: 1, height:1},
+    shadowRadius: 2
   },
   image: {
     width: '100%',
     height: '100%',
     borderRadius: 8
+  },
+  text: {
+    color: Colors.textColor
   }
 })
 

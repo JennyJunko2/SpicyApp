@@ -1,12 +1,12 @@
 import { useLayoutEffect, useState } from "react"
 import { View, Text, Image, ScrollView, StyleSheet } from "react-native"
 import IconButton from "../components/UI/IconButton"
+import { Colors } from "../constants/colors"
 import { getAddress, getMapPreview } from "../utils/location"
 
 const SpicyItemDetailsScreen = ({navigation, route}) => {
   const item = route.params.item
   const [location, setLocation] = useState()
-  console.log('item.image_uri:', item)
 
   useLayoutEffect(() => {
     const fetchedAddress = async() => {
@@ -49,10 +49,10 @@ const SpicyItemDetailsScreen = ({navigation, route}) => {
           <Text style={styles.rate}>Spicy: {item.spicy_rate.toFixed(1)}</Text>
           <Text style={styles.rate}>Tasty: {item.delicious_rate.toFixed(1)}</Text>
         </View>
-      <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
+      <Text style={styles.description}>{item.description}</Text>
       <View style={styles.addressBox}>
         <Text style={styles.addressSubtitle}>Address Information</Text>
-        <Text>{location}</Text>
+        <Text style={styles.addressText}>{location}</Text>
         {location
           ? <View style={styles.mapContainer}>
             <Image
@@ -75,8 +75,9 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
     height: 350,
-    borderColor: 'black',
+    borderColor: Colors.primaryColor,
     borderWidth: 1,
+    borderStyle: 'dashed',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 8,
     textAlign: 'center',
+    color: Colors.textColor
   },
   ratingBox: {
     flexDirection: 'row',
@@ -98,8 +100,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   rate: {
-    backgroundColor: 'red',
-    color: '#ffffff',
+    backgroundColor: Colors.primaryColor,
+    color: Colors.backgroundColor,
     fontWeight: 'bold',
     fontSize: 16,
     marginTop: 2,
@@ -109,7 +111,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   description: {
-    marginTop: 12
+    marginTop: 12,
+    color: Colors.textColor
   },
   addressBox: {
     marginTop: 12,
@@ -119,7 +122,11 @@ const styles = StyleSheet.create({
   addressSubtitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    padding: 5
+    padding: 5,
+    color: Colors.textColor
+  },
+  addressText: {
+    color: Colors.textColor
   },
   mapContainer: {
     width: '100%',
@@ -131,9 +138,9 @@ const styles = StyleSheet.create({
   },
   categoryTag: {
     position: 'absolute',
-    backgroundColor: 'red',
+    backgroundColor: Colors.primaryColor,
     padding: 5,
-    color: '#ffffff',
+    color: Colors.backgroundColor,
     top: 5,
     right: 5,
     zIndex: 1,

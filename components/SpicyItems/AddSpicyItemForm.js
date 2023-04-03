@@ -6,6 +6,7 @@ import SpicyLocationPicker from './SpicyLocationPicker'
 import BasicButton from '../UI/BasicButton'
 import AddSpicyItemValidationSchema from '../../utils/validation'
 import FormattedTextInput from '../UI/FormattedTextInput'
+import { Colors } from '../../constants/colors'
 
 const AddSpicyItemForm = ({onSubmitHandler, initialValues}) => {
   const submitFormHandler = (data) => {
@@ -26,7 +27,7 @@ const AddSpicyItemForm = ({onSubmitHandler, initialValues}) => {
           spicyRate: initialValues?.spicy_rate.toString(),
           category: initialValues?.category_id,
           imageUri: initialValues?.image_uri,
-          location: initialValues ? {
+          location: initialValues?.location_lat ? {
             lat: initialValues.location_lat,
             lng: initialValues.location_lng
           } : null
@@ -104,14 +105,14 @@ const styles = StyleSheet.create({
     flex: 1
   },
   textInput: {
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.backgroundColor,
     padding: 12,
     paddingTop: 12,
     marginVertical: 8,
     borderRadius: 6
   },
   errorText: {
-    color: 'red',
+    color: Colors.primaryColor,
     marginTop: -8,
     marginBottom: 8
   }

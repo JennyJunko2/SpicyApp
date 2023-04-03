@@ -26,13 +26,14 @@ export const signup = (displayName, email, password) => {
     })
     .catch((error) => {
       console.log('error:',error)
+      alert('Invalid inputs')
     })
 }
 
 export const login = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then(() => console.log('login success'))
-    .catch(() => alert('Invalid credential', 'check!'))
+    .catch(() => alert('Invalid credential'))
 }
 
 export const logout = () => {

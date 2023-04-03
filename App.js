@@ -12,6 +12,7 @@ import AddSpicyItemScreen from './screens/AddSpicyItemScreen';
 import { dropTables, initializeTables } from './utils/database';
 import MapScreen from './screens/MapScreen';
 import SpicyItemDetailsScreen from './screens/SpicyItemDetailsScreen';
+import { Colors } from './constants/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,14 @@ const PreAuthenticatedStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: 'black'
+        headerTintColor: Colors.backgroundColor,
+        contentStyle: {
+          backgroundColor: Colors.backgroundColor
+        },
+        headerStyle: {
+          backgroundColor: Colors.primaryColor,
+          shadowColor: 'transparent'
+        },
       }}
     >
       <Stack.Screen
@@ -38,11 +46,26 @@ const PreAuthenticatedStack = () => {
 const PostAuthenticatedStack = () => {
   console.log('post')
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: Colors.backgroundColor,
+        },
+        headerStyle: {
+          backgroundColor: Colors.primaryColor,
+          shadowColor: 'transparent'
+        },
+        headerTitleStyle: {
+          color: Colors.backgroundColor
+        },
+        headerTintColor: Colors.backgroundColor
+      }}
+    >
       <Stack.Screen
         name='AllSpicyItems'
         component={AllSpicyItemsScreen}
         options={({navigation}) => ({
+          title: 'Spicy Logger',
           headerRight: ({tintColor}) => (
             [
               <IconButton
@@ -66,14 +89,21 @@ const PostAuthenticatedStack = () => {
       <Stack.Screen
         name='AddSpicyItem'
         component={AddSpicyItemScreen}
+        options={{
+          title: 'Add Spicy Item'
+        }}
       />
       <Stack.Screen
         name='Map'
         component={MapScreen}
       />
-      <Stack.Screen name='SpicyItemDetails' component={SpicyItemDetailsScreen} options={{
-        title: 'Loading Spicy Item...'
-      }}/>
+      <Stack.Screen
+        name='SpicyItemDetails'
+        component={SpicyItemDetailsScreen}
+        options={{
+          title: 'Loading Spicy Item...'
+        }}
+      />
     </Stack.Navigator>
   )
 }

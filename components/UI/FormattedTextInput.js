@@ -1,4 +1,5 @@
 import { Text, TextInput, View, StyleSheet } from 'react-native'
+import { Colors } from '../../constants/colors'
 
 
 const FormattedTextInput = ({
@@ -14,7 +15,7 @@ const FormattedTextInput = ({
 
   return (
     <View style={customStyle}>
-      <Text>{label}</Text>
+      <Text style={styles.label}>{label}</Text>
       <TextInput
         placeholder={placeholder}
         value={value}
@@ -31,19 +32,28 @@ const FormattedTextInput = ({
 
 const styles = StyleSheet.create({
   textInput: {
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.backgroundColor,
     padding: 12,
     paddingTop: 12,
     marginVertical: 8,
-    borderRadius: 6
+    borderRadius: 6,
+    elevation: 2,
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowOffset: {width: 1, height:1},
+    shadowRadius: 2,
+    color: Colors.textColor
   },
   errorText: {
-    color: 'red',
+    color: Colors.primaryColor,
     marginTop: -8,
     marginBottom: 8
   },
   multiline: {
     minHeight: 60
+  },
+  label: {
+    color: Colors.textColor
   }
 })
 

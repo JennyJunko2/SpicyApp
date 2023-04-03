@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { getMapPreview } from "../../utils/location"
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native"
 import { useField, useFormikContext } from 'formik'
+import { Colors } from "../../constants/colors"
 
 
 const SpicyLocationPicker = () => {
@@ -60,7 +61,7 @@ const SpicyLocationPicker = () => {
     navigation.navigate('Map')
   }
 
-  let locationPreview = <Text>Add a Location you ate/found this spicy food.</Text>
+  let locationPreview = <Text style={styles.text}>Add a Location you ate/found this spicy food.</Text>
   if (field.value) {
     locationPreview = (
       <Image
@@ -100,8 +101,13 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderRadius: 8
+    backgroundColor: Colors.backgroundColor,
+    borderRadius: 8,
+    elevation: 2,
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowOffset: {width: 1, height:1},
+    shadowRadius: 2
   },
   actions: {
     flexDirection: 'row',
@@ -112,6 +118,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 8
+  },
+  text: {
+    color: Colors.textColor
   }
 })
 

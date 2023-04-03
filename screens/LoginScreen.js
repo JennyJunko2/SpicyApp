@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import {Text, Button, View, TextInput, StyleSheet} from 'react-native'
+import {Text, Button, View, TextInput, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
 import { login } from '../authentication/firebase'
 import BasicButton from '../components/UI/BasicButton'
+import { Colors } from '../constants/colors'
 
 const LoginScreen = ({navigation}) => {
   const [enteredEmail, setEnteredEmail] = useState()
@@ -16,30 +17,35 @@ const LoginScreen = ({navigation}) => {
   }
 
   return (
-    <View style={styles.authForm}>
+    <KeyboardAvoidingView behavior='position' style={styles.authForm}>
       <View>
+        <View>
+          <Image source={require('../assets/main_logo.png')} style={styles.image}/>
+        </View>
         <TextInput
           placeholder='Email'
           value={enteredEmail}
           onChangeText={(email) => setEnteredEmail(email)}
           style={styles.textInput}
         />
-      </View>
-      <View>
-        <TextInput
-          placeholder='Password'
-          value={enteredPassword}
-          onChangeText={(pwd) => setEnteredPassword(pwd)}
-          style={styles.textInput}
-        />
+        <View>
+          <TextInput
+            placeholder='Password'
+            value={enteredPassword}
+            onChangeText={(pwd) => setEnteredPassword(pwd)}
+            style={styles.textInput}
+            />
+        </View>
       </View>
       <BasicButton
         title={'Login'}
         onPress={submitHandler}
-      />
-      <Text>Or</Text>
+        />
+      <View style={styles.rootText}>
+        <Text>Or</Text>
+      </View>
       <Button title='Create New User' onPress={createNewUserButtonClickHandler} />
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -50,13 +56,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   textInput: {
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.backgroundColor,
     fontSize: 16,
     padding: 12,
     paddingTop: 12,
     marginVertical: 8,
     borderRadius: 6,
-    minWidth: 300
+    minWidth: 300,
+    elevation: 2,
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowOffset: {width: 1, height:1},
+    shadowRadius: 2
+  },
+  image: {
+    width: '100%',
+    height: 300
+  },
+  rootText: {
+    alignItems: 'center'
   }
 })
 

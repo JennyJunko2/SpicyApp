@@ -1,4 +1,5 @@
 import { Pressable, Text, StyleSheet } from "react-native"
+import { Colors } from "../../constants/colors"
 
 const BasicButton = ({onPress, title, color}) => {
   return (
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginHorizontal: 4,
     marginVertical: 8,
-    backgroundColor: 'blue',
+    backgroundColor: Colors.primaryColor,
     elevation: 2,
     shadowColor: 'black',
     shadowOpacity: 0.2,
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#ffffff'
+    color: Colors.backgroundColor
   }
 })
 

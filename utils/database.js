@@ -142,6 +142,7 @@ export const updateSpicyItem = (spicyItem) => {
         [spicyItem.title, spicyItem.category, spicyItem.description, spicyItem.spicyRate, spicyItem.deliciousRate, spicyItem.imageUri, spicyItem.location?.lat, spicyItem.location?.lng, spicyItem.item_id],
         (_, result) => {
           console.log('successfully updated')
+          resolve(result)
         },
         (_,error) => {
           console.log('error in update')
@@ -192,6 +193,29 @@ export const getAllSpicyItems = () => {
         (_, result) => {
           console.log('select all items:', result.rows._array)
           resolve(result.rows._array)
+        },
+        (_,error) => {
+          reject(error)
+        }
+      )
+    })
+  })
+
+  return promise
+}
+
+export const getSpicyItemById = (id) => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((transaction) => {
+      transaction.executeSql(
+        `SELECT *, spicy_items.name AS spicy_item_name, categories.name AS category_name
+          FROM spicy_items
+          LEFT JOIN categories ON spicy_items.category_id = categories.category_id
+          WHERE item_id = ?`,
+        [id],
+        (_, result) => {
+          console.log('result:', result.rows._array[0])
+          resolve(result.rows._array[0])
         },
         (_,error) => {
           reject(error)
