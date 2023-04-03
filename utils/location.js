@@ -1,4 +1,4 @@
-import { MAP_BOX_TOKEN } from '@env'
+import { MAP_BOX_TOKEN } from '@env';
 
 export const getMapPreview = (lat, lng) => {
   const imagePreviewUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff0000(${lng},${lat})/${lng},${lat},14,0/400x200?access_token=${MAP_BOX_TOKEN}`;

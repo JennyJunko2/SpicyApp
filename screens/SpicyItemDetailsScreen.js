@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react"
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native"
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native"
 import IconButton from "../components/UI/IconButton"
 import { Colors } from "../constants/colors"
 import { getAddress, getMapPreview } from "../utils/location"

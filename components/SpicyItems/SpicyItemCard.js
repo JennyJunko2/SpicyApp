@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { View, Text, Pressable, StyleSheet, Image } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { Colors } from '../../constants/colors'
 
 const SpicyItemCard = ({item}) => {
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginVertical: 8,
     marginHorizontal: 4,
-    minHeight: 125,
     backgroundColor: Colors.backgroundColor,
     elevation: 2,
     shadowColor: 'black',

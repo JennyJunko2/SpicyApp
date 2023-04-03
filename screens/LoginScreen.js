@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Text, Button, View, TextInput, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
+import { Button, Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native'
 import { login } from '../authentication/firebase'
 import BasicButton from '../components/UI/BasicButton'
 import { Colors } from '../constants/colors'

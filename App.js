@@ -1,18 +1,18 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { useContext, useEffect } from 'react';
 import { AuthContext, AuthContextProvider } from './authentication/auth-context';
-import SignupScreen from './screens/SignupScreen';
-import { NavigationContainer } from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import LoginScreen from './screens/LoginScreen';
-import IconButton from './components/UI/IconButton';
 import { logout } from './authentication/firebase';
-import AllSpicyItemsScreen from './screens/AllSpicyItemsScreen';
-import AddSpicyItemScreen from './screens/AddSpicyItemScreen';
-import { dropTables, initializeTables } from './utils/database';
-import MapScreen from './screens/MapScreen';
-import SpicyItemDetailsScreen from './screens/SpicyItemDetailsScreen';
+import IconButton from './components/UI/IconButton';
 import { Colors } from './constants/colors';
+import AddSpicyItemScreen from './screens/AddSpicyItemScreen';
+import AllSpicyItemsScreen from './screens/AllSpicyItemsScreen';
+import LoginScreen from './screens/LoginScreen';
+import MapScreen from './screens/MapScreen';
+import SignupScreen from './screens/SignupScreen';
+import SpicyItemDetailsScreen from './screens/SpicyItemDetailsScreen';
+import { initializeTables, dropTables } from './utils/database';
 
 const Stack = createNativeStackNavigator();
 

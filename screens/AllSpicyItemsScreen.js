@@ -1,10 +1,10 @@
+import { Ionicons } from '@expo/vector-icons'
 import { useIsFocused } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
-import {FlatList, Pressable, StyleSheet, TextInput, View, Text} from 'react-native'
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import SpicyItemCard from '../components/SpicyItems/SpicyItemCard'
-import { getAllSpicyItems } from '../utils/database'
-import { Ionicons } from '@expo/vector-icons'
 import { Colors } from '../constants/colors'
+import { getAllSpicyItems } from '../utils/database'
 
 const AllSpicyItemsScreen = () => {
   const [loadedSpicyItems, setLocatedSpicyItems] = useState([])

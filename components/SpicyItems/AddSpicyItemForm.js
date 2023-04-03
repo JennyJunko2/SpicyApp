@@ -1,12 +1,12 @@
-import { ScrollView, Text, StyleSheet, View, TextInput, Button } from 'react-native'
 import { Formik } from 'formik'
-import DropDownPickerInForm from '../UI/DropDownPickerInForm'
-import SpicyPhotoPicker from './SpicyPhotoPicker'
-import SpicyLocationPicker from './SpicyLocationPicker'
-import BasicButton from '../UI/BasicButton'
-import AddSpicyItemValidationSchema from '../../utils/validation'
-import FormattedTextInput from '../UI/FormattedTextInput'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import { Colors } from '../../constants/colors'
+import AddSpicyItemValidationSchema from '../../utils/validation'
+import BasicButton from '../UI/BasicButton'
+import DropDownPickerInForm from '../UI/DropDownPickerInForm'
+import FormattedTextInput from '../UI/FormattedTextInput'
+import SpicyLocationPicker from './SpicyLocationPicker'
+import SpicyPhotoPicker from './SpicyPhotoPicker'
 
 const AddSpicyItemForm = ({onSubmitHandler, initialValues}) => {
   const submitFormHandler = (data) => {

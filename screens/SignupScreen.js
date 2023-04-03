@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Image, TextInput, View, StyleSheet } from 'react-native'
-import { signup, auth } from '../authentication/firebase'
+import { Image, StyleSheet, TextInput, View } from 'react-native'
+import { signup } from '../authentication/firebase'
 import BasicButton from '../components/UI/BasicButton'
 import { Colors } from '../constants/colors'
 

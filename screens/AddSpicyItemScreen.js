@@ -1,5 +1,4 @@
 import { useLayoutEffect } from 'react'
-import { Text } from 'react-native'
 import AddSpicyItemForm from '../components/SpicyItems/AddSpicyItemForm'
 import { addSpicyItem, getSpicyItemById, updateSpicyItem } from '../utils/database'
 

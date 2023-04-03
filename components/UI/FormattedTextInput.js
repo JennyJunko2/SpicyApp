@@ -1,6 +1,5 @@
-import { Text, TextInput, View, StyleSheet } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { Colors } from '../../constants/colors'
-
 
 const FormattedTextInput = ({
   label,

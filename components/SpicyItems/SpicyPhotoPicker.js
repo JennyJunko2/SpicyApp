@@ -1,9 +1,9 @@
 
-import { launchCameraAsync, useCameraPermissions, PermissionStatus } from 'expo-image-picker'
-import { Image, Text, Alert, View, StyleSheet } from "react-native"
-import OutlinedButton from '../UI/OutlinedButton'
+import { launchCameraAsync, PermissionStatus, useCameraPermissions } from 'expo-image-picker'
 import { useField, useFormikContext } from 'formik'
+import { Alert, Image, StyleSheet, Text, View } from "react-native"
 import { Colors } from '../../constants/colors'
+import OutlinedButton from '../UI/OutlinedButton'
 
 const SpicyPhotoPicker = () => {
   const [cameraPermissionInformation, requestPermission] = useCameraPermissions()

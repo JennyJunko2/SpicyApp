@@ -1,7 +1,7 @@
-import { Pressable, Text, StyleSheet } from "react-native"
+import { Pressable, StyleSheet, Text } from "react-native"
 import { Colors } from "../../constants/colors"
 
-const BasicButton = ({onPress, title, color}) => {
+const BasicButton = ({onPress, title}) => {
   return (
     <Pressable onPress={onPress} style={({pressed}) => [styles.button, pressed && styles.pressed]}>
       <Text style={styles.text}>{title}</Text>

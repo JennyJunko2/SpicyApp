@@ -1,11 +1,11 @@
-import { Text, View, StyleSheet, Alert, Image } from "react-native"
-import OutlinedButton from "../UI/OutlinedButton"
-import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from 'expo-location'
-import { useEffect } from "react"
-import { getMapPreview } from "../../utils/location"
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native"
+import { getCurrentPositionAsync, PermissionStatus, useForegroundPermissions } from 'expo-location'
 import { useField, useFormikContext } from 'formik'
+import { useEffect } from "react"
+import { Alert, Image, StyleSheet, Text, View } from "react-native"
 import { Colors } from "../../constants/colors"
+import { getMapPreview } from "../../utils/location"
+import OutlinedButton from "../UI/OutlinedButton"
 
 
 const SpicyLocationPicker = () => {

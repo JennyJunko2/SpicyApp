@@ -1,9 +1,9 @@
+import { useField, useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
-import DropDownPicker from 'react-native-dropdown-picker'
-import { useField, useFormikContext } from 'formik'
-import { getAllCategories } from '../../utils/database';
-import { Text, View, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 import { Colors } from '../../constants/colors';
+import { getAllCategories } from '../../utils/database';
 
 const DropDownPickerInForm = ({label}) => {
   const [open, setOpen] = useState(false);
