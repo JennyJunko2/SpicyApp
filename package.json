@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "babel-plugin-dotenv-import": "^3.0.1",
     "expo": "~48.0.9",
     "expo-image-picker": "~14.1.1",
     "expo-location": "~15.1.1",
