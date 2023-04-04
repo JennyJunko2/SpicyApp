@@ -34,11 +34,11 @@ Please get an account and an access token, and put the value in .env file with t
 ```
 git clone https://github.com/JennyJunko2/SpicyApp.git
 ```
-1. Install all the dependencies
+2. Install all the dependencies
 ```
 npm install
 ```
-1. Start the app
+3. Start the app
 ```
 npx expo start
 ```
